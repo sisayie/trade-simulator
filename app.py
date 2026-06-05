@@ -306,15 +306,6 @@ margin = st.sidebar.number_input(
     step=100.0
 )
 
-# NEW: USER PNL SLIDER
-example_pnl_pct = st.sidebar.slider(
-    "Example PnL Move (%)",
-    min_value=-100,
-    max_value=100,
-    value=10,
-    step=1
-)
-
 # NEW: MULTISELECT LEVERAGES
 leverages = st.sidebar.multiselect(
     "Select Leverages",
@@ -489,6 +480,15 @@ st.pyplot(fig)
 # =========================
 
 st.subheader("Example Scenario")
+
+# NEW: USER PNL SLIDER
+example_pnl_pct = st.slider(
+    "Example PnL Move (%)",
+    min_value=-100,
+    max_value=100,
+    value=10,
+    step=1
+)
 
 summary_df = build_example_summary(
     leverages=leverages,
