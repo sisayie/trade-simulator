@@ -507,5 +507,5 @@ st.info("""
 Notes:
 - This simulator assumes linear PnL.
 - Funding fees, trading fees, slippage, and liquidation fees are not included.
-- This is not a finance advice. Use it for educational purposes only.
+- This app is not meant for a finance advice. Use it for educational purposes only.
 """)
