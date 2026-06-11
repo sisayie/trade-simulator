@@ -295,15 +295,15 @@ position_type = st.sidebar.selectbox(
 entry_price = st.sidebar.number_input(
     "Entry Price ($)",
     min_value=0.0001,
-    value=30000.0,
-    step=100.0
+    value=300.0,
+    step=10.0
 )
 
 margin = st.sidebar.number_input(
     "Margin ($)",
     min_value=1.0,
-    value=1000.0,
-    step=100.0
+    value=100.0,
+    step=10.0
 )
 
 # NEW: MULTISELECT LEVERAGES
