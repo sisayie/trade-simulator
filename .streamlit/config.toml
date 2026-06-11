@@ -5,5 +5,8 @@ secondaryBackgroundColor="#262730"
 textColor="#FAFAFA"
 font="sans serif"
 
+[ui]
+hideTopBar = true
+
 [server]
 baseUrlPath = "trade-simulator"
