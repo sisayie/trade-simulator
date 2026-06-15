@@ -281,25 +281,129 @@ def build_example_summary(
     return pd.DataFrame(summary_data)
 
 
+# # =========================
+# # SIDEBAR
+# # =========================
+
+# st.sidebar.header("Trade Settings")
+
+# position_type = st.sidebar.selectbox(
+#     "Position Type",
+#     ["Long", "Short"]
+# )
+
+# entry_price = st.sidebar.number_input(
+#     "Entry Price ($)",
+#     min_value=0.0001,
+#     value=300.0,
+#     step=10.0
+# )
+
+# margin = st.sidebar.number_input(
+#     "Margin ($)",
+#     min_value=1.0,
+#     value=100.0,
+#     step=10.0
+# )
+
+# # NEW: MULTISELECT LEVERAGES
+# leverages = st.sidebar.multiselect(
+#     "Select Leverages",
+#     DEFAULT_LEVERAGES,
+#     default=DEFAULT_LEVERAGES
+# )
+
+# # Prevent empty selection 
+# if not leverages: 
+#     st.warning("Please select at least one leverage.") 
+#     st.stop()
+
+# range_mode = st.sidebar.radio(
+#     "Price Range Input",
+#     ["Percentage Movement", "Target Prices"]
+# )
+
+# # =========================
+# # PRICE RANGE INPUTS
+# # =========================
+
+# if range_mode == "Percentage Movement":
+
+#     price_move_pct = st.sidebar.slider(
+#         "Price Movement Range (%)",
+#         min_value=1,
+#         max_value=100,
+#         value=80
+#     )
+
+#     prices, price_changes = generate_price_data(
+#         entry_price=entry_price,
+#         range_mode=range_mode,
+#         price_move_pct=price_move_pct
+#     )
+
+# else:
+
+#     min_price = st.sidebar.number_input(
+#         "Minimum Price ($)",
+#         min_value=0.01,
+#         value=entry_price * 0.7
+#     )
+
+#     max_price = st.sidebar.number_input(
+#         "Maximum Price ($)",
+#         min_value=0.01,
+#         value=entry_price * 1.3
+#     )
+
+#     steps = st.sidebar.slider(
+#         "Number of Price Steps",
+#         min_value=10,
+#         max_value=200,
+#         value=50,
+#         help="""
+#             Controls how many simulated price points are generated 
+#             between the minimum and maximum price.
+
+#             Higher values create:
+#             • smoother charts
+#             • more detailed tables
+#             • more calculations
+
+#             Lower values create:
+#             • faster performance
+#             • simpler visualization
+#             """
+#     )
+
+#     prices, price_changes = generate_price_data(
+#         entry_price=entry_price,
+#         range_mode=range_mode,
+#         min_price=min_price,
+#         max_price=max_price,
+#         steps=steps
+#         )
+
+
 # =========================
-# SIDEBAR
+# Instead of SIDEBAR (compatible for smartphone)
 # =========================
 
-st.sidebar.header("Trade Settings")
+st.header("Trade Settings")
 
-position_type = st.sidebar.selectbox(
+position_type = st.selectbox(
     "Position Type",
     ["Long", "Short"]
 )
 
-entry_price = st.sidebar.number_input(
+entry_price = st.number_input(
     "Entry Price ($)",
     min_value=0.0001,
     value=300.0,
     step=10.0
 )
 
-margin = st.sidebar.number_input(
+margin = st.number_input(
     "Margin ($)",
     min_value=1.0,
     value=100.0,
@@ -307,7 +411,7 @@ margin = st.sidebar.number_input(
 )
 
 # NEW: MULTISELECT LEVERAGES
-leverages = st.sidebar.multiselect(
+leverages = st.multiselect(
     "Select Leverages",
     DEFAULT_LEVERAGES,
     default=DEFAULT_LEVERAGES
@@ -318,7 +422,7 @@ if not leverages:
     st.warning("Please select at least one leverage.") 
     st.stop()
 
-range_mode = st.sidebar.radio(
+range_mode = st.radio(
     "Price Range Input",
     ["Percentage Movement", "Target Prices"]
 )
@@ -329,7 +433,7 @@ range_mode = st.sidebar.radio(
 
 if range_mode == "Percentage Movement":
 
-    price_move_pct = st.sidebar.slider(
+    price_move_pct = st.slider(
         "Price Movement Range (%)",
         min_value=1,
         max_value=100,
@@ -344,19 +448,19 @@ if range_mode == "Percentage Movement":
 
 else:
 
-    min_price = st.sidebar.number_input(
+    min_price = st.number_input(
         "Minimum Price ($)",
         min_value=0.01,
         value=entry_price * 0.7
     )
 
-    max_price = st.sidebar.number_input(
+    max_price = st.number_input(
         "Maximum Price ($)",
         min_value=0.01,
         value=entry_price * 1.3
     )
 
-    steps = st.sidebar.slider(
+    steps = st.slider(
         "Number of Price Steps",
         min_value=10,
         max_value=200,
